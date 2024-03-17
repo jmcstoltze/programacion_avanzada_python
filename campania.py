@@ -11,10 +11,15 @@ class Campania():
         self.__nombre = nombre
         self.__fecha_inicio = fecha_inicio
         self.__fecha_termino = fecha_termino
-        self.__anuncios = anuncios
+        self.__anuncios = []
 
+        # Itera la lista anuncios para obtener instancias que se almacenan en el atributo anuncios
+        for a in anuncios:
+            instancia_anuncio = self.__obtener_instancia_anuncio(a)
+            self.__anuncios.append(instancia_anuncio)
+        
     # Método privado para obtener la instancia del anuncio obteniendo los datos desde un diccionario
-    def _obtener_instancia_anuncio(self, anuncio: dict):
+    def __obtener_instancia_anuncio(self, anuncio: dict):
         tipo_anuncio = anuncio.get("tipo", "").lower()
         ancho = anuncio.get("ancho", 0)
         alto = anuncio.get("alto", 0)
@@ -31,7 +36,7 @@ class Campania():
             return Display(ancho, alto, url_archivo, url_clic, sub_tipo)
         elif tipo_anuncio == "social":
             return Social(ancho, alto, url_archivo, url_clic, sub_tipo)
-        
+            
     # Método de propiedad para acceder al nombre de la campaña
     @property
     def nombre(self) -> str:
@@ -42,7 +47,7 @@ class Campania():
     def nombre(self, nombre: str) -> None:
         
         # Verificar que el nombre ingresado no exceda los 250 caracteres
-        if nombre.len() > 250:
+        if len(nombre) > 250:
             raise LargoExcedidoError("El largo del nombre excede los 250 caracteres")
         else:
             self.__nombre = nombre

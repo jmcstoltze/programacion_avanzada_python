@@ -16,7 +16,14 @@ class Anuncio(ABC):
         self.__alto = alto if alto > 0 else 1
         self.__url_archivo = url_archivo
         self.__url_clic = url_clic
-        self.__sub_tipo = sub_tipo
+        
+        # Se debe validar el subtipo antes de asignarle el valor al atributo
+        if (isinstance(self, Video) and sub_tipo not in Video.SUB_TIPOS
+        or isinstance(self, Display) and sub_tipo not in Display.SUB_TIPOS
+        or isinstance(self, Social) and sub_tipo not in Social.SUB_TIPOS):
+            raise SubTipoInvalidoError("El sub tipo indicado no está permitido para este formato")
+        else:
+            self.__sub_tipo = sub_tipo
 
     # Método de propiedad para acceder al ancho
     @property
@@ -93,7 +100,7 @@ class Anuncio(ABC):
 
     # Método abstracto para comprimir los anuncios
     @abstractmethod
-    def comprimir_anuncios(self) -> None:
+    def comprimir_anuncio(self) -> None:
         pass
     
     # Método abstracto para redimensionar los anuncios

@@ -15,13 +15,13 @@ c = Campania(
       "url_archivo": "sin-url",
       "sub_tipo": "instream",
       "duracion": 30}]
-      )
+    )    
 
 # Bloque try para el ingreso y modificación de datos
 try:
 
     # Solicita al usuario ingresar un nuevo nombre para la campaña
-    nombre = input("Ingrese nuevo nombre de la campania:\n")
+    nombre = input("Ingrese nuevo nombre de la campaña:\n")
     
     # Solicita al usuario ingresar un nuevo subtipo para el anuncio
     sub_tipo = input("Ingrese nuevo sub tipo del anuncio:\n")
@@ -39,4 +39,3 @@ except Exception as e:
         
         # Escribe el error en el archivo de registro
         log.write(f"{e}\n")
-        
