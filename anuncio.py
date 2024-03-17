@@ -114,7 +114,7 @@ class Video(Anuncio):
         super().__init__(ancho = 1, alto = 1, url_archivo = url_archivo.lower(), url_clic  = url_clic.lower(), sub_tipo = sub_tipo.lower())
         
         # Atributo de la instancia
-        self.__duracion = duracion
+        self.__duracion = duracion if duracion > 0 else 5
 
     # Método getter del atributo duración
     @property
