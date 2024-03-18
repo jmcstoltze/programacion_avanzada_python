@@ -1,23 +1,23 @@
 class Error(Exception):
     """
-    Base class for custom exceptions in this module.
+    Clase base para excepciones personalizadas en este módulo.
     """
     pass
 
 class LargoExcedidoError(Error):
     """
-    Exception raised when the length exceeds a certain limit.
+    Excepción lanzada cuando la longitud excede un cierto límite.
 
-    Attributes:
-        None
+    Atributos:
+        Ninguno
     """
     pass
 
 class SubTipoInvalidoError(Error):
     """
-    Exception raised when an invalid subtype is encountered.
+    Excepción lanzada cuando se encuentra un subtipo no válido.
 
-    Attributes:
-        None
+    Atributos:
+        Ninguno
     """
     pass
